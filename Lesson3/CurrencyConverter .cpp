@@ -7,7 +7,8 @@ int main()
     while (flag)
     {
         std::cout << "Please enter the AMD amount and it will be converted to your chosen currency." << std::endl;
-        int AMD_amount = 0;
+
+        double AMD_amount = 0.0;
         std::cin >> AMD_amount;
 
         std::cout << "Please choose currency." << std::endl;
@@ -19,6 +20,7 @@ int main()
         std::cin >> currency;
 
         std::cout << "Please enter today's currency exchange rate." << std::endl;
+
         double rate = 0.0;
         std::cin >> rate;
 
@@ -31,12 +33,13 @@ int main()
         else if (3 == currency)
             std::cout << " Russian ruble." << std::endl;
         else
-            std::cout << "Incorrect option." << std::endl;
+            std::cout << "Wrong input!" << std::endl;
          
-        std::cout << "Do you want to continue? Type yes or no." << std::endl;  
+        std::cout << "Do you want to continue? Type yes or anything." << std::endl;  
+
         std::string answer;
         std::cin >> answer;
-        
+
         if ("yes" != answer)
             flag = false;
                     
