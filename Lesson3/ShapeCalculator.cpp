@@ -77,7 +77,7 @@ int main()
             std::cout << "Wrong input!" << std::endl;
          
          
-        std::cout << "Do you want to continue? Type yes or anything." << std::endl;  
+        std::cout << "Do you want to continue? \n Type \"yes\" to continue or anything to terminate the program." << std::endl;  
 
         std::string answer;
         std::cin >> answer;
