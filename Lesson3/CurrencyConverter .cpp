@@ -27,13 +27,21 @@ int main()
         std::cout << AMD_amount << " AMD = " << AMD_amount / rate;
 
         if (1 == currency) 
+        {
             std::cout << " US Dollar." << std::endl;
+        }
         else if (2 == currency)
+        {
             std::cout << " Euro." << std::endl;
+        }
         else if (3 == currency)
+        {
             std::cout << " Russian ruble." << std::endl;
+        }
         else
+        {
             std::cout << "Wrong input!" << std::endl;
+        }
          
         std::cout << "Do you want to continue? \n Type \"yes\" to continue or anything to terminate the program." << std::endl;  
 
@@ -41,7 +49,9 @@ int main()
         std::cin >> answer;
 
         if ("yes" != answer)
+        {
             flag = false;
+        }
                     
     }
 

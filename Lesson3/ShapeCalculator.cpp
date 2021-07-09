@@ -12,7 +12,7 @@ int main()
         std::cout << "1. Triangle." << std::endl;
         std::cout << "2. Circle." << std::endl;
         std::cout << "3. Square." << std::endl;
-        std::cout << "3. Rectangle." << std::endl;
+        std::cout << "4. Rectangle." << std::endl;
 
         int shape = 0;
         std::cin >> shape;
@@ -74,7 +74,9 @@ int main()
             std::cout << "The rectangle perimeter is equla to " << 2 * ( length + width ) << std::endl;
         }
         else
+        {
             std::cout << "Wrong input!" << std::endl;
+        }
          
          
         std::cout << "Do you want to continue? \n Type \"yes\" to continue or anything to terminate the program." << std::endl;  
@@ -83,7 +85,9 @@ int main()
         std::cin >> answer;
 
         if ("yes" != answer)
+        {
             flag = false;
+        }
                     
     }
 
