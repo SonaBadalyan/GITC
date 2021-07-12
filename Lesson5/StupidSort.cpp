@@ -34,8 +34,8 @@ int main()
                 array[i] = array[i + 1] ^ array[i];
                 array[i + 1] = array[i + 1] ^ array[i];
 
-                ++count_swaps;
                 i = -1;
+                ++count_swaps;      
         }
         ++i;
         ++count_comp;

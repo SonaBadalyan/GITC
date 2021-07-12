@@ -16,7 +16,6 @@ int main()
         {
             max = array[i];
         }
-        
         ++i;
     }
     

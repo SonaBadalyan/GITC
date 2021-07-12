@@ -47,12 +47,10 @@ int main()
                 b = true; 
                 ++count_swaps;
             }
-
             ++i;
             ++count_comp;
         }
     }
-    
     
     std::cout << "Array after sorting: ";
 

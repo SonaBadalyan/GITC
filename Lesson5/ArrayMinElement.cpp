@@ -16,7 +16,6 @@ int main()
         {
             min = array[i];
         }
-        
         ++i;
     }
     

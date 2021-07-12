@@ -10,8 +10,7 @@ void swap(int &value1, int &value2)
 {
     value1 = value1 ^ value2;
     value2 = value1 ^ value2;
-    value1 = value1 ^ value2;
-    
+    value1 = value1 ^ value2;  
 }
 
 int main()
