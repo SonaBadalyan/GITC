@@ -45,7 +45,6 @@ int main()
             if (array[i + 1] < array[i])
             {
                 swap(array[i + 1], array[i]);
-                
                 ++count_swaps;
                 b = true; 
             }
@@ -54,7 +53,6 @@ int main()
         }
         --size;
     }
-    
     
     std::cout << "Array after sorting: ";
 
