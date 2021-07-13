@@ -9,5 +9,6 @@ Repository for GITC homework solutions
 
 4 lessson record` https://drive.google.com/file/d/1bgMUK4Def-DtvCCun66wg79-pCvjomqs/view 
 
-5 lessson record`
+5 lessson record` https://drive.google.com/file/d/1qqZUDgr1393PVCQUuOWKEeYt9D1TuM0W/view
+                  https://drive.google.com/file/d/1WOxqSEzbhUABNbQ3LN1NWz_cXbQwI6Nw/view
 
