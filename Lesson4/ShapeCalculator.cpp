@@ -156,7 +156,7 @@ int main()
                 
                 while (length_flag)
                 {
-                    std::cout << "Please enter the rectangle length calculating the area." << std::endl;
+                    std::cout << "Please enter the rectangle length for calculating the area." << std::endl;
                     
                     std::cout << "Length = ";
                     std::cin >> length;
@@ -178,7 +178,7 @@ int main()
                 
                 while (width_flag)
                 {
-                    std::cout << "Please enter the rectangle width calculating the area." << std::endl;
+                    std::cout << "Please enter the rectangle width for calculating the area." << std::endl;
                     
                     std::cout << "Width = ";
                     std::cin >> width;
