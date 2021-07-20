@@ -29,7 +29,7 @@ int main()
 
     assert(sum != 0 && count != 0);
 
-    std::cout << "The top half odd elements average equal to : " << sum / count << std::endl; 
+    std::cout << "The top half`s odd elements average equal to : " << sum / count << std::endl; 
 
     sum = 0;
     count = 0;
@@ -47,7 +47,7 @@ int main()
     }
     assert(sum != 0 && count != 0);
 
-    std::cout << "The bottom half even and negative elements average equal to : " << sum / count << std::endl; 
+    std::cout << "The bottom half`s even and negative elements average equal to : " << sum / count << std::endl; 
 
     return 0;
 }

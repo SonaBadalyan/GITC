@@ -12,7 +12,7 @@ int main()
         }
     }
 
-    std::cout << "Boundary elements of matrix  " << std::endl;
+    std::cout << "Boundary elements of matrix." << std::endl;
     for (int i = 0; i < 4; ++i)
     {
         for (int j = 0; j < 4; ++j)

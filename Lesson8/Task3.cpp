@@ -23,7 +23,7 @@ int main()
     }
     std::cout << std::endl;
 
-    std::cout << "The top half elements : ";
+    std::cout << "The top half`s elements : ";
     for (int i = 0; i < 4; ++i)
     {
         for (int j = i + 1; j < 4; ++j)
@@ -33,7 +33,7 @@ int main()
     }
     std::cout << std::endl; 
 
-    std::cout << "The bottom half elements : ";
+    std::cout << "The bottom half`s elements : ";
     for (int i = 0; i < 4; ++i)
     {
         for (int j = 0; j < i; ++j)
