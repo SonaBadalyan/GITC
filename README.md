@@ -17,3 +17,5 @@ Repository for GITC homework solutions
 7-th lessson record` https://drive.google.com/file/d/1cRP7MlSOzosifaois4Xk3PvhD-ebaTWa/view?usp=sharing
 
 8-th lessson record` https://drive.google.com/file/d/1glI-2yPo1z0be6AQg2eHEHB2GWSnUaJl/view
+
+9-th lessson record` https://drive.google.com/file/d/1eNU3oSXi7dsR2F6uCHxhVxDA5vKrCM20/view
