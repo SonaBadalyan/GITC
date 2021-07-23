@@ -91,7 +91,7 @@ void right_triangle()
             sides_flag = false;
             
             std::cout << "The right triangle area is equla to " << (side1 * side2) / 2 << std::endl;
-            std::cout << "The right triangle perimeter is equla to " << side1 + side2  + sqrt(pow(2, side1) + pow(2, side2)) << std::endl;
+            std::cout << "The right triangle perimeter is equla to " << side1 + side2  + sqrt( pow( side1, 2 ) + pow( side2, 2) ) << std::endl;
         }
         
     }
@@ -202,7 +202,7 @@ void rectangle()
         }
     }
                     
-    std::cout << "The rectangle area is equla to " << length * width << std::endl;;
+    std::cout << "The rectangle area is equla to " << length * width << std::endl;
     
     std::cout << "The rectangle perimeter is equla to " << 2 * ( length + width ) << std::endl;
 }
