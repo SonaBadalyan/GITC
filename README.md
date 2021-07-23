@@ -19,3 +19,6 @@ Repository for GITC homework solutions
 8-th lessson record` https://drive.google.com/file/d/1glI-2yPo1z0be6AQg2eHEHB2GWSnUaJl/view
 
 9-th lessson record` https://drive.google.com/file/d/1eNU3oSXi7dsR2F6uCHxhVxDA5vKrCM20/view
+
+10-th lessson record` https://drive.google.com/file/d/1pk20HoaM_uOyhBcR1InSSH6lZTGxvxKj/view
+
