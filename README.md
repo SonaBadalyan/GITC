@@ -22,3 +22,5 @@ Repository for GITC homework solutions
 
 10-th lessson record` https://drive.google.com/file/d/1pk20HoaM_uOyhBcR1InSSH6lZTGxvxKj/view
 
+11-th lessson record` https://drive.google.com/file/d/1iriuej6uKnEKHto_YkuvEN3_mtVIPKTV/view?usp=sharing
+
