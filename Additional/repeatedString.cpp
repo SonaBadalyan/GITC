@@ -12,34 +12,28 @@ long repeatedString(std::string s, long n)
     else if (1 == s.size() && 'a' != s[0])
         return 0;
 
+    long count = 0; // std::count(s.begin(), s.end(), 'a');
 
-    long count = std::count(s.begin(), s.end(), 'a');
-
-    // for (int i = 0; i < s.size(); ++i)
-    // {
-    //      if ('a' == s.at(i))
-    //     {
-    //         ++count;
-    //     }
-    // }
-
-    long size = s.size();
-    long i = 0;
-
-    while ( size != n )
+    for (int i = 0; i < s.size(); ++i)
     {
-        if ( i == s.size() )
-        {
-            i = 0;
-        }
-
         if ('a' == s.at(i))
         {
             ++count;
         }
+    }
 
-        ++size;
-        ++i;
+    count = count * n / s.size();
+
+    long reminder =  n % s.size();
+
+    // count += std::count(s.begin(), s.begin() + reminder, 'a');
+
+    for (int i = 0; i != reminder; ++i)
+    {
+        if ('a' == s.at(i))
+        {
+            ++count;
+        }
     }
 
     return count;
@@ -47,8 +41,8 @@ long repeatedString(std::string s, long n)
 
 int main()
 {
-    std::string s = "a";
-    long n = 1000000000000000;
+    std::string s = "aab";
+    long n = 10;
 
     std::cout << repeatedString(s, n) << std::endl;
     
