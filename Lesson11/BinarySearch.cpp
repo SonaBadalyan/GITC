@@ -16,12 +16,14 @@ bool binary_search(int arr[], int key, int start, int end, bool)
 
     if (arr[mid] > key)
     {
-        binary_search(arr, key, start, mid - 1, true);
+        return binary_search(arr, key, start, mid - 1, true);
     }
     else
     {
-        binary_search(arr, key, mid + 1, end, true);
+        return binary_search(arr, key, mid + 1, end, true);
     }
+
+    return false;
 }
 
 bool binary_search(int arr[], int key, int start, int end)
