@@ -6,36 +6,35 @@ bool binary_search(int arr[], int key, int start, int end, bool)
 
     if (end >= start)
     {
-         mid = start + (end - start) / 2;
+        mid = start + (end - start) / 2;
+
+         if (arr[mid] == key)
+        {
+            return true;
+        }
+        else if (arr[mid] > key)
+        {
+            binary_search(arr, key, start, mid - 1, true);
+        }
+        else
+        {
+            binary_search(arr, key, mid + 1, end, true);
+        }
     }
     else 
     {
         return false;
     }
-
-    if (arr[mid] == key)
-    {
-        return true;
-    }
-
-    if (arr[mid] > key)
-    {
-        return binary_search(arr, key, start, mid - 1, true);
-    }
-    else
-    {
-        return binary_search(arr, key, mid + 1, end, true);
-    }
-
-    return false;
 }
 
 bool binary_search(int arr[], int key, int start, int end)
 {
-    int mid = start + (end - start) / 2;
+    int mid = 0;
 
     while (end >= start)
     {
+        mid = start + (end - start) / 2;
+
         if (key == arr[mid])
         {
             return true;
@@ -50,8 +49,6 @@ bool binary_search(int arr[], int key, int start, int end)
         {
             start = mid + 1;
         }
-
-        mid = start + (end - start) / 2;
     }
 
     return false;
@@ -62,7 +59,7 @@ int main()
     int arr[] = {10, 20, 30, 40, 50, 60, 70, 80, 90};
 
     int size = sizeof(arr) / sizeof(arr[0]);
-    int key = 600;
+    int key = 90;
 
     if (binary_search(arr, key, 0, size))
     {
