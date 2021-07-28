@@ -2,7 +2,7 @@
 
 int fibonacci(int n, bool)
 {
-    if ( n == 0 || n == 1)
+    if ( n <= 1)
         return n;
 
     return fibonacci(n - 1, true) + fibonacci(n - 2, true);
@@ -28,8 +28,8 @@ int fibonacci(int n)
 
 int main()
 {
-    int num = 12;
-    std::cout << "The fibonacci of " << num << " is equal to " << fibonacci(num) << std::endl;
+    int num = 10;
+    std::cout << "The fibonacci of " << num << " is equal to " << fibonacci(num, true) << std::endl;
 
     return 0;
 }
