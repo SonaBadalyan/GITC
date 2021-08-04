@@ -136,7 +136,7 @@ int main()
                     
                     if (side <= 0)
                     {
-                        std::cout << "Positive number must be assigned to radius. Please enter positive number." << std::endl;
+                        std::cout << "Positive number must be assigned to side. Please enter positive number." << std::endl;
                     }
                     else
                     {
