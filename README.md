@@ -1,6 +1,4 @@
 # GITC
-
-
 Repository for GITC homework solutions
 
 1-th lessson record` https://www.youtube.com/watch?v=p0B1nFAyLow 
@@ -29,4 +27,6 @@ Repository for GITC homework solutions
 12-th lessson record` https://drive.google.com/file/d/1eNsMk24E-rtAFCv7y5iD2lKdS-vziprp/view
 
 13-th lessson record` https://www.youtube.com/watch?v=exrxZperWkg
+
+14-th lessson record` https://www.youtube.com/watch?v=euPBblulvIA
 
