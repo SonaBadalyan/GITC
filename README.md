@@ -30,3 +30,5 @@ Repository for GITC homework solutions
 
 14-th lessson record` https://www.youtube.com/watch?v=euPBblulvIA
 
+15-th lesson record` https://www.youtube.com/watch?v=yucSPFyKsxg
+
