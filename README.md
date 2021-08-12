@@ -32,3 +32,7 @@ Repository for GITC homework solutions
 
 15-th lesson record` https://www.youtube.com/watch?v=yucSPFyKsxg
 
+16-th lesson record` https://youtu.be/4ZPFBPv40Ng
+
+17-th lesson record` https://www.youtube.com/watch?v=Jrd1ThHIegw
+
