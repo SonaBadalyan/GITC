@@ -8,13 +8,13 @@ class Dequeue
         {
             if (isFull()) 
             {
-                std::cout << "CircularQueue is full!" << std::endl;
+                std::cout << "Dequeue is full!" << std::endl;
             }
             else 
             {
                 if (isEmpty())
                 {
-                    front = back = 0;
+                    front = 0;
                 }
                 if (0 == front)
                 {
@@ -32,18 +32,18 @@ class Dequeue
         {
            if (isEmpty())
             {
-                std::cout << "CircularQueue is empty!" << std::endl;
+                std::cout << "Dequeue is empty!" << std::endl;
                 return -1;
             }
             else 
             {
-                if (front == back) 
+                if (front == back)
                 {
                     int val = array[front];
                     front = back = -1;
                     return val;
                 }
-                else if (front = size - 1)
+                else if (size -1  == front)
                 {
                     int val = array[front];
                     front = 0;
@@ -62,7 +62,7 @@ class Dequeue
         {
             if (isFull()) 
             {
-                std::cout << "CircularQueue is full!" << std::endl;
+                std::cout << "Dequeue is full!" << std::endl;
             }
             else 
             {
@@ -86,7 +86,7 @@ class Dequeue
         {
             if (isEmpty())
             {
-                std::cout << "CircularQueue is empty!" << std::endl;
+                std::cout << "Dequeue is empty!" << std::endl;
                 return -1;
             }
             else 
@@ -137,11 +137,11 @@ class Dequeue
 
         void print() 
         {
-            std::cout << "_________________Print queue_____________" << std::endl;
+            std::cout << "_________________Print dequeue_____________" << std::endl;
 
             if (isEmpty())
             {
-                std::cout << "Empty CircularQueue!" << std::endl;
+                std::cout << "Empty dequeue!" << std::endl;
             }
             else 
             {
@@ -170,7 +170,9 @@ int main()
     Dequeue dequeue;
 
     dequeue.push_front(1);
+    dequeue.push_front(10);
     dequeue.push_back(1);
+    dequeue.push_back(10);
     dequeue.push_front(2);
     dequeue.push_back(2);
     dequeue.push_front(3);
@@ -186,23 +188,26 @@ int main()
     std::cout << " Is empty " << dequeue.isEmpty() << std::endl;
     std::cout << " Is full " << dequeue.isFull() << std::endl;
 
-    dequeue.pop_front();
-    dequeue.pop_front();
-    dequeue.pop_front();
+    std::cout << "Poped front: " << dequeue.pop_front() << std::endl;
+    std::cout << "Poped front: " << dequeue.pop_front() << std::endl;
+    std::cout << "Poped front: " << dequeue.pop_front() << std::endl;
     dequeue.print();
 
-    dequeue.pop_back();
+    std::cout << "Poped back: " << dequeue.pop_back() << std::endl;
     dequeue.print();
 
-    dequeue.pop_front();
+    std::cout << "Poped front: " << dequeue.pop_front() << std::endl;
     dequeue.print();
 
-    dequeue.pop_back();
-    dequeue.pop_back();
-    dequeue.pop_back();
-    dequeue.pop_back();
-    dequeue.pop_back();
+    std::cout << "Poped back: " << dequeue.pop_back() << std::endl;
+    std::cout << "Poped back: " << dequeue.pop_back() << std::endl;
+    std::cout << "Poped back: " << dequeue.pop_back() << std::endl;
+    std::cout << "Poped back: " << dequeue.pop_back() << std::endl;
+    std::cout << "Poped back: " << dequeue.pop_back() << std::endl;
     dequeue.print();
+
+    std::cout << "Poped back: " << dequeue.pop_back() << std::endl;
+    std::cout << "Poped front: " << dequeue.pop_front() << std::endl;
 
     std::cout << " Is empty " << dequeue.isEmpty() << std::endl;
     std::cout << " Is full " << dequeue.isFull() << std::endl;

@@ -36,3 +36,5 @@ Repository for GITC homework solutions
 
 17-th lesson record` https://www.youtube.com/watch?v=Jrd1ThHIegw
 
+18-th lesson record` https://www.youtube.com/watch?v=OV0LhnkjZtA
+
