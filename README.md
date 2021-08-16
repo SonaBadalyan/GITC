@@ -38,3 +38,5 @@ Repository for GITC homework solutions
 
 18-th lesson record` https://www.youtube.com/watch?v=OV0LhnkjZtA
 
+19-th lesson record` https://www.youtube.com/watch?v=mZobLhD5StA
+

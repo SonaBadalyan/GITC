@@ -163,7 +163,7 @@ class LinkedList
             return true;
         }
 
-        int get(int index)
+        int operator[](int index)
         {
             if (index < 0 || index > m_length)
             {
@@ -390,10 +390,10 @@ int main()
     list.deleteBack();
     list.print();
     
-    std::cout << "list.get(5) " << list.get(5) << std::endl;
-    std::cout << "list.get(0) " << list.get(0) << std::endl;
-    std::cout << "list.get(3) " << list.get(3) << std::endl;
-    std::cout << "ist.get(4) " << list.get(4) << std::endl;
+    std::cout << "list[5] " << list[5] << std::endl;
+    std::cout << "list[0] " << list[0] << std::endl;
+    std::cout << "list[3] " << list[3] << std::endl;
+    std::cout << "ist[4] " << list[4] << std::endl;
     
     std::cout << "list.find(10) " << list.find(10) << std::endl;
     std::cout << "list.find(20) " << list.find(20) << std::endl;
