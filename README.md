@@ -40,3 +40,5 @@ Repository for GITC homework solutions
 
 19-th lesson record` https://www.youtube.com/watch?v=mZobLhD5StA
 
+20-th lesson record` https://www.youtube.com/watch?v=w8ntKMWlqSk
+

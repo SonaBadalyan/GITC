@@ -1,4 +1,5 @@
 .vscode
 .project
+build
 *.exe
 *.out
