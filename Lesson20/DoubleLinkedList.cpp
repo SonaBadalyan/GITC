@@ -1,345 +1,162 @@
-#include<iostream>
+#include <iostream>
 
 class DoubleLinkedList
 {
-    class Node 
+    class Node
     {
         public:
 
-            Node(int data)
+            Node (int data)
             {
-                this->data = data;
+                m_data = data;
             }
 
-            int data = 0;
-            Node* next = nullptr;
-            Node* prev = nullptr;
-
+            int m_data = 0;
+            Node* m_next = nullptr;
+            Node* m_prev = nullptr; 
     };
-
+    
     public:
 
-        DoubleLinkedList(const DoubleLinkedList& rhs)
+        DoubleLinkedList()
         {
-            if (this == &rhs || isEmpty())
-            {
-                return;
-            }
-
-            head = tail = new Node(rhs.head->data);
-
-            if (1 == rhs.m_size)
-            {   
-                m_size = 1;
-                return;
-            }
-
-            Node* curr = rhs.head->next;
-
-            while(curr)
-            {
-                Node* newNode = new Node(curr->data);
-
-                tail->next = newNode;
-                newNode->prev = tail;
-                tail = newNode;
-
-                curr = curr->next;
-            }
-
-            m_size = rhs.m_size;
+            m_length = 0;
+            head = nullptr;
+            tail = nullptr; 
         }
 
-        void insert_front(int value)
+        int operator[](int index)
         {
-            if (isEmpty())
+            if (index < 0 || index > m_length)
             {
-                head = tail = new Node(value);
-                ++m_size;
-                return;
-            }
-
-            Node* newNode = new Node(value);
-            head->prev = newNode;
-            newNode->next = head;
-
-            head = newNode;
-
-            ++m_size;
-        }
-
-        void insert(int value, int pos)
-        {
-            if (pos <= 0 && pos > m_size)
-            {
-                std::cout << "Unable to insert!" << std::endl;
-                return;
-            }
-
-            if( 1 == pos)
-            {
-                insert_front(value);
-                return;
-            }
-            if (m_size = pos)
-            {
-                insert_back(value);
-                return;
+                return -1;
             }
 
             Node* curr = head;
 
-            for (int i = 0; i < pos; ++i)
+            for(int i = 0; i < index; ++i)
             {
-                curr = curr->next;
+                curr = curr->m_next;  
             }
 
-            Node* newNode = new Node(value);
-
-            curr->next->prev = newNode;
-            newNode->next = curr->next;
-            newNode->prev = curr;
-            curr->next = newNode;
-
-            ++m_size;
-        }
-
-        void insert_back(int value)
-        {
-            if (isEmpty())
-            {
-                head = tail = new Node(value);
-                ++m_size;
-                return;
-            }
-
-            Node* newNode = new Node(value);
-
-            tail->next = newNode;
-            newNode->prev = tail;
-
-            tail = newNode;
-            ++m_size;
-        }
-
-        bool remove_front()
-        {
-            if (isEmpty())
-            {
-                std::cout << "List is empty!" << std::endl;
-                return false;
-            }
-
-            head = head->next;
-            --m_size;
-
-            return true;
-        }
-
-        bool remove(int pos)
-        {
-            if (pos <= 0 && pos > m_size)
-            {
-                std::cout << "Unable to insert!" << std::endl;
-                return false;
-            }
-
-            if (1 == pos)
-            {
-                remove_front();
-                return true;
-            }
-            if(m_size == pos)
-            {
-                remove_back();
-                return true;
-            }
-
-            Node* curr = head;
-
-            for (int i = 0; i < pos; ++i)
-            {
-                curr = curr->next;
-            }
-
-            curr->prev->next = curr->next;
-            curr->next->prev = curr->prev;
-            --m_size;
-
-            return true;
+            return curr->m_data;
         }
 
         bool remove_back()
         {
-            if (isEmpty())
+            if (!head)
             {
-                std::cout << "List is empty!" << std::endl;
-                return false;
+                return false; 
             }
 
-            tail = tail->prev;
-            --m_size;
+            if (head == tail)
+            {
+                --m_length;
 
+                head = tail = nullptr;
+                return true;
+            }
+
+            --m_length;
+
+            tail = tail->m_prev;
+            tail->m_next = nullptr;
             return true;
         }
 
-        bool removeByValue(int value)
+        bool remove_front()
         {
-            if (isEmpty())
+            if (!head)
             {
-                std::cout << "List is empty!" << std::endl;
+                --m_length;
+                
                 return false;
             }
-
-            Node* curr = head;
-
-            while(curr)
+            if (head == tail)
             {
-                if(curr->data == value)
-                {
-                    curr->prev->next = curr->next;
-                    curr->next->prev = curr->prev;
-                    break;
-                }
-
-                curr = curr->next;
+                head = tail = nullptr;
+                return true;
             }
-            --m_size;
 
-            return true;
+            --m_length;
+
+            head = head->m_next;
+            head->m_prev = nullptr;
+            return true;  
         }
 
-        bool find(int value)
+        void insert_back(int data)
         {
+            Node* temp = new Node(data);
+
             if (isEmpty())
             {
-                std::cout << "List is empty!" << std::endl;
-                return false;
+                head = tail = temp;
+                return;
             }
 
-            Node* curr = head;
+            tail->m_next = temp;
+            temp->m_prev = tail;
+            tail = temp;
 
-            while(curr)
+            ++m_length;
+        }
+
+        void insert_front(int data)
+        {
+            Node* temp = new Node(data);
+
+            if (isEmpty())
             {
-                if(curr->data == value)
-                {
-                    return true;
-                }
-
-                curr = curr->next;
+                head = tail = temp;
+                return;
             }
 
-            return false;
+            temp->m_next = head;
+            head->m_prev = temp;
+            head = temp;
+
+            ++m_length;
         }
 
         bool isEmpty()
         {
-            if (!head && 0 == m_size)
+            if (nullptr == head)
             {
                 return true;
             }
-            return false;
-        }
 
-        int size()
-        {
-            return m_size;
+            return false;
         }
 
         void print()
         {
-            std::cout << "_______________Print double linked list_______________" << std::endl;
+            std::cout << "_______________Print linked list_______________" << std::endl;
 
             if (isEmpty())
             {
-                std::cout << "List is empty!" << std::endl;
                 return;
             }
-            
+
             Node* curr = head;
 
-            while(curr)
+            while (curr)
             {
-                std::cout << curr->data << "   ";
-                curr = curr->next;
-            }
-
-            std::cout << std::endl;
-
-        }
-        void reverse_print()
-        {
-            std::cout << "_______________Reverse print double linked list_______________" << std::endl;
-
-            if (isEmpty())
-            {
-                std::cout << "List is empty!" << std::endl;
-                return;
+                std::cout << curr->m_data << "   ";
+                curr = curr->m_next;
             }
             
-            Node* curr = tail;
-
-            while(curr)
-            {
-                std::cout << curr->data << "   ";
-                curr = curr->prev;
-            }
-
             std::cout << std::endl;
-
-        }
-        int operator[](int pos)
-        {
-            if (pos <= 0 && pos > m_size)
-            {
-                std::cout << "Unable to insert!" << std::endl;
-                return -1;
-            }
-
-            if (isEmpty())
-            {
-                std::cout << "List is empty!" << std::endl;
-                return -1;
-            }
-
-            Node* curr = head;
-
-            for(int i = 0; i < pos; ++i)
-            {
-                curr = curr->next;
-            }
-
-            return curr->data;
         }
 
-        bool operator==(const DoubleLinkedList& rhs)
+        int length()
         {
-            if(this == &rhs)
-            {
-                return true;
-            }
-
-            if (rhs.m_size != m_size)
-            {
-                return false;
-            }
-
-            Node* curr = head;
-            Node* rhsCurr = rhs.head;
-
-            for(int i = 0; i < m_size; ++i)
-            {
-                if(curr->data != rhsCurr->data)
-                {
-                    return false;
-                }
-            }
-
-            return true;
+            return m_length;
         }
 
     private:
-        int m_size = 0;
-        Node* head = nullptr;
-        Node* tail = nullptr;
+
+        int m_length;
+        Node* head;
+        Node* tail;
 };

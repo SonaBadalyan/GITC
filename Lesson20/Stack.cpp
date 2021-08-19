@@ -5,6 +5,12 @@ class Stack
 {
     public:
 
+        Stack()
+        {
+            size = 10;
+            list = new DoubleLinkedList();
+        }
+
         void push(int val)
         {
             if (isFull())
@@ -18,12 +24,13 @@ class Stack
 
         int pop()
         {
-            int result = list->operator[](list->size());
+            int result = list->operator[](list->length() - 1);
 
             if (list->remove_back())
             {
                 return result;
             }
+            
             return -1;
         }
 
@@ -36,7 +43,7 @@ class Stack
 
         bool isFull()
         {
-            if (list->size() == size)
+            if (list->length() == size)
             {
                 return true;
             }
@@ -55,20 +62,23 @@ class Stack
         }
 
     private:
-        int size = 10;
+
+        int size;
         DoubleLinkedList* list;
 };
 
 int main()
 {
     Stack stack;
-    
+    stack.print();
+
     stack.push(10);
     stack.push(20);
     stack.push(30);
     stack.push(40);
     stack.push(50);
     std::cout << "stack.isFull() " << stack.isFull() << std::endl;
+    stack.print();
 
     stack.push(60);
     stack.push(70);
@@ -76,6 +86,7 @@ int main()
     stack.push(90);
     stack.push(100);
     std::cout << "stack.isFull() " << stack.isFull() << std::endl;
+    stack.print();
 
     stack.push(110);
 

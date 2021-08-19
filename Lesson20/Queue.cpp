@@ -3,70 +3,76 @@
 
 class Queue
 {
-public:
+    public:
 
-    void push(int val)
-    {
-        
-
-        if (!isFull())
+        Queue()
         {
-            list->insert_front(val);
+            size = 10;
+            list = new DoubleLinkedList();
         }
-        else 
-        {
-            std::cout << "The queue is full, can`t push the element." << std::endl;
-        }
-    }
 
-    int pop()
-    {
-        if (!isEmpty())
+        void push(int val)
         {
-            int removed_val = list->operator[](list->size());
-
-            if (list->remove_front())
+            if (!isFull())
             {
-                --size;
-                return removed_val;
+                list->insert_back(val);
+            }
+            else 
+            {
+                std::cout << "The queue is full, can`t push the element." << std::endl;
             }
         }
-        else 
+
+        int pop()
         {
-            std::cout << "The queue is empty, can`t pop the element." << std::endl;
-        }
-    }
+            if (!isEmpty())
+            {
+                int removed_val = list->operator[](0);
 
-    void print()
-    {
-        std::cout << "_________________Print queue_____________" << std::endl;
-
-        list->print();
-    }
-
-    bool isFull()
-    {
-        if(size == list->size())
-        {
-            return true;
-        }
-
-        return false;
-    }
-
-    bool isEmpty()
-    {
-        if (list->isEmpty())
-        {
-            return true;
+                if (list->remove_front())
+                {
+                    --size;
+                    return removed_val;
+                }
+            }
+            else 
+            {
+                std::cout << "The queue is empty, can`t pop the element." << std::endl;
+                return -1;
+            }
         }
 
-        return false; 
-    }
+        void print()
+        {
+            std::cout << "_________________Print queue_____________" << std::endl;
 
-private:
-    int size = 10;
-    DoubleLinkedList* list;
+            list->print();
+        }
+
+        bool isFull()
+        {
+            if(size == list->length())
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        bool isEmpty()
+        {
+            if (list->isEmpty())
+            {
+                return true;
+            }
+
+            return false; 
+        }
+
+    private:
+    
+        int size;
+        DoubleLinkedList* list;
 };
 
 int main()

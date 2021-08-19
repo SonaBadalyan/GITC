@@ -4,6 +4,11 @@
 class Dequeue
 {
     public:
+        Dequeue()
+        {
+            list = new DoubleLinkedList();
+            size = 10;
+        }
 
         void push_front(int val)
         {
@@ -26,7 +31,8 @@ class Dequeue
             }
             else 
             {
-                int removed_val = list->operator[](list->size());
+                int removed_val = list->operator[](0);
+
                 if(list->remove_front())
                 {
                     return removed_val;
@@ -42,7 +48,7 @@ class Dequeue
             }
             else 
             {
-               list->insert_front(val);
+               list->insert_back(val);
             }
         }
 
@@ -55,7 +61,7 @@ class Dequeue
             }
             else 
             {
-                int removed_val = list->operator[](list->size());
+                int removed_val = list->operator[](list->length());
                 if(list->remove_back())
                 {
                     return removed_val;
@@ -65,7 +71,7 @@ class Dequeue
 
         bool isFull()
         {
-            if (list->size() == size)
+            if (list->length() == size)
             {
                 return true;
             }
@@ -102,7 +108,7 @@ class Dequeue
     private:
 
         DoubleLinkedList* list;
-        int size = 10;
+        int size;
 };
 
 int main()
