@@ -46,7 +46,7 @@ class BST
 
         bool deleteNode(int val)
         {
-            return deleteNode(val, root);
+            return deleteNode(val, root, true);
         }
 
     private:
@@ -85,6 +85,46 @@ class BST
             }
         }
         
+
+        bool deleteNode(int val, Node* startNode, bool overloaded)
+        {
+            Node* temp = find(startNode, val, true);
+
+            if (!temp) 
+            {
+                return false;
+            }
+
+            Node* maxFromMins = temp->left;
+
+            while(maxFromMins->right)
+            {
+                maxFromMins = maxFromMins->right;
+            }
+
+            temp->data = maxFromMins->data;
+
+            if (!maxFromMins->left && !maxFromMins->right) 
+            {
+                if (!maxFromMins->parent) 
+                {
+                    root = temp = maxFromMins = nullptr;
+                    return true; 
+                }
+
+                maxFromMins->parent->right = nullptr;
+                return true;
+            }
+
+            if (maxFromMins->left) // && !maxFromMins->right) 
+            {
+                maxFromMins->parent->right = maxFromMins->left;
+                return true;
+            }
+
+            return false;
+
+        }
 
         bool deleteNode(int val, Node* startNode)
         {
@@ -389,7 +429,7 @@ int main()
         std::cout << "found" << std::endl;
     }
 
-    bst.deleteNode(500);
+    bst.deleteNode(250);
 
     bst.print();
 
