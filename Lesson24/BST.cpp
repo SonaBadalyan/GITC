@@ -95,30 +95,57 @@ class BST
                 return false;
             }
 
-            Node* maxFromMins = temp->left;
+            // Node* maxFromMins = temp->left;
 
-            while(maxFromMins->right)
+            // while(maxFromMins->right)
+            // {
+            //     maxFromMins = maxFromMins->right;
+            // }
+
+            // temp->data = maxFromMins->data;
+
+            // if (!maxFromMins->left && !maxFromMins->right) 
+            // {
+            //     if (!maxFromMins->parent) 
+            //     {
+            //         root = temp = maxFromMins = nullptr;
+            //         return true; 
+            //     }
+
+            //     maxFromMins->parent->right = nullptr;
+            //     return true;
+            // }
+
+            // if (maxFromMins->left) // && !maxFromMins->right) 
+            // {
+            //     maxFromMins->parent->right = maxFromMins->left;
+            //     return true;
+            // }
+
+            Node* minFromMaxs = temp->right;
+
+            while(minFromMaxs->left)
             {
-                maxFromMins = maxFromMins->right;
+                minFromMaxs = minFromMaxs->left;
             }
 
-            temp->data = maxFromMins->data;
+            temp->data = minFromMaxs->data;
 
-            if (!maxFromMins->left && !maxFromMins->right) 
+            if (!minFromMaxs->left && !minFromMaxs->right) 
             {
-                if (!maxFromMins->parent) 
+                if (!minFromMaxs->parent) 
                 {
-                    root = temp = maxFromMins = nullptr;
+                    root = temp = minFromMaxs = nullptr;
                     return true; 
                 }
 
-                maxFromMins->parent->right = nullptr;
+                minFromMaxs->parent->left = nullptr;
                 return true;
             }
 
-            if (maxFromMins->left) // && !maxFromMins->right) 
+            if (minFromMaxs->right) // && !minFromMaxs->left) 
             {
-                maxFromMins->parent->right = maxFromMins->left;
+                minFromMaxs->parent->left = minFromMaxs->right;
                 return true;
             }
 
