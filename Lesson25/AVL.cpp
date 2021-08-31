@@ -24,6 +24,23 @@ class AVL
             return add(val, root);
         }
 
+        bool isBalanced()
+        {
+            auto result = isBalanced(root);
+            
+            if(result.second)
+            {
+                bool isUnbalanced = result.first < -1 || result.first > 1;
+
+                if (isUnbalanced)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
     private:
 
         void add(int val, Node* temp)
@@ -223,6 +240,17 @@ int main()
     tree.insert(11);
     tree.insert(7);
     tree.insert(53);
+
+    if(tree.isBalanced())
+    {
+        std::cout << "Tree is balanced!" << std::endl;
+    }
+    else
+    {
+        std::cout << "Tree is not balanced!" << std::endl;
+    }
+
+
     tree.insert(4);
 
     
@@ -233,6 +261,15 @@ int main()
     tree.insert(19);
     tree.insert(16);
     tree.insert(20);
+
+    if(tree.isBalanced())
+    {
+        std::cout << "Tree is balanced!" << std::endl;
+    }
+    else
+    {
+        std::cout << "Tree is not balanced!" << std::endl;
+    }
 
     return 0;
 
