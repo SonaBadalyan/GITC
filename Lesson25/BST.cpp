@@ -164,12 +164,14 @@ class BST
             if(temp->left && !temp->right)
             {
                 temp->parent = temp->left;
+                temp->left->parent = temp->parent;
                 --size;
                 return true;
             }
             if(!temp->left && temp->right)
             {
                 temp->parent = temp->right;
+                temp->right->parent = temp->parent;
                 --size;
                 return true;
             }
@@ -260,12 +262,16 @@ class BST
                 if (temp->parent->left == temp) // if remove node is left node for it`s parent node
                 {
                     temp->parent->left = temp->left; 
+                    temp->left->parent = temp->parent;
+
                     --size;
                     return true;
                 }
                 else if (temp->parent->right == temp) // if remove node is right node for it`s parent node
                 {
                     temp->parent->right = temp->left;
+                    temp->right->parent = temp->parent;
+
                     --size;
                     return true;
                 }
@@ -276,12 +282,16 @@ class BST
                 if (temp->parent->left == temp) // if remove node is left node for it`s parent node
                 {
                     temp->parent->left = temp->right;
+                    temp->left->parent = temp->parent;
+
                     --size;
                     return true;
                 }
                 else if (temp->parent->right == temp) // if remove node is right node for it`s parent node
                 {
                     temp->parent->right = temp->right;
+                    temp->right->parent = temp->parent;
+
                     --size;
                     return true;
                 }

@@ -119,6 +119,8 @@ class BST
             // if (maxFromMins->left) // && !maxFromMins->right) 
             // {
             //     maxFromMins->parent->right = maxFromMins->left;
+            //     maxFromMins->left->parent = maxFromMins->parent;
+
             //     return true;
             // }
 
@@ -146,6 +148,8 @@ class BST
             if (minFromMaxs->right) // && !minFromMaxs->left) 
             {
                 minFromMaxs->parent->left = minFromMaxs->right;
+                minFromMaxs->right->parent = minFromMaxs->parent;
+
                 return true;
             }
 
@@ -200,11 +204,15 @@ class BST
                 if (temp->parent->left == temp) // if remove node is left node for it`s parent node
                 {
                     temp->parent->left = temp->left; 
+                    temp->left->parent = temp->parent;
+
                     return true;
                 }
                 else if (temp->parent->right == temp) // if remove node is right node for it`s parent node
                 {
                     temp->parent->right = temp->left;
+                    temp->right->parent = temp->parent;
+
                     return true;
                 }
             }
@@ -214,11 +222,15 @@ class BST
                 if (temp->parent->left == temp) // if remove node is left node for it`s parent node
                 {
                     temp->parent->left = temp->right;
+                    temp->left->parent = temp->parent;
+
                     return true;
                 }
                 else if (temp->parent->right == temp) // if remove node is right node for it`s parent node
                 {
                     temp->parent->right = temp->right;
+                    temp->right->parent = temp->parent;
+
                     return true;
                 }
             }
