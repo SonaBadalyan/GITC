@@ -1,0 +1,18 @@
+Vim is a free and open-source, screen-based text editor program for Unix.
+
+Open a new or existing file with vim filename.
+Type i to switch into insert mode so that you can start editing the file.
+Enter or modify the text with your file.
+Once you're done, press the escape key Esc to get out of insert mode and back to command mode.
+Type : to put yourself at the commmand line (cursor jumps to bottom of screen)
+Type wq to save and exit your file. The w means “write” and q means “quit”.
+Or type q! for quit without writing.
+
+                    Text editing commands
+
+1. :[line_number] - goes to the line, that is written in the given number line.
+2. yy - copy (yank) the current line.
+3. dd - delete the current line.
+4. :u or :undo - undo changes.
+
+

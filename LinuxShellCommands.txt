@@ -1,0 +1,24 @@
+                                Shell commands
+
+1.  pwd (print working directory) - command writes the full pathname of the current working directory to the standard output.
+2.  ls (list segments) - lists the files in the current working directory.
+        -all or -a  - (ls -a, ls -all) command will enlist the whole list of the current directory including the hidden files. Hidden files start with . (dot) symbol and they are not visible in the regular directory. 
+3.  cd (change directory) - command is used to change the current working directory ( i.e., in which the current user is working). 
+        Every directory contains a pointer to itself (.) and a pointer to its parent directory (..) We can navigate to the parent directory using the cd .. command. Or we can run the program from the current directory using the ./a.out command.
+4.  mv (move) - command moves one or more files or directories from one place to another. 
+5.  rm (remove)- command used to remove objects such as computer files, directories...
+6.  which - command used to identify the location of executables. 
+7.  sudo (superuser do) - allows users to run programs with the security privileges of another user, by default the superuser.
+8.  sudo apt-get install [program_name] - command is used to download the latest version of your desired application from an online software repository.
+9.  diff (difference) - the utility diff is a data comparison tool that computes and displays the differences between the contents of files.
+        diff a.txt b.txt - shows a and b files differences in the terminal.
+        diff a.txt b.txt > c.txt - creates c.txt file and writes a and b files differences in this file.
+10. grep (global regular expression print) - is a command-line utility for searching plain-text data sets for lines that match a regular expression.
+11. | (pipe) - A pipe is a form of redirection (transfer of standard output to some other destination) that is used to send the output of one command/program/process to another command/program/process for further processing.
+12. ifconfig (interface configuration) - command is used to configure the kernel-resident network interfaces. It is used at the boot time to set up the interfaces as necessary. After that, it is usually used when needed during debugging or when you need system tuning.
+
+                                    Tools 
+
+1. g++ [c++ source file name] - GNU C++ Compiler
+2. valgrind [program_name] - Valgrind is a programming tool for memory debugging, memory leak detection, and profiling. 
+3. vim [file_name] - Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient.
