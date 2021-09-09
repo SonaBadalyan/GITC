@@ -143,47 +143,37 @@ class BST
                 if (temp->parent->left == temp) // if remove node is left node for it`s parent node
                 {
                     temp->parent->left = temp->left; 
-                    temp->left->parent = temp->parent;
-
-                    delete temp;
-                    temp = nullptr;
-
-                    return true;
                 }
                 else if (temp->parent->right == temp) // if remove node is right node for it`s parent node
                 {
                     temp->parent->right = temp->left;
-                    temp->right->parent = temp->parent;
-
-                    delete temp;
-                    temp = nullptr;
-
-                    return true;
                 }
+
+                temp->left->parent = temp->parent;
+
+                delete temp;
+                temp = nullptr;
+
+                return true;
             }
 
             if (!temp->left && temp->right) // if node have only right child
             {
-                if (temp->parent->left == temp) // if remove node is left node for it`s parent node
+               if (temp->parent->left == temp) // if remove node is left node for it`s parent node
                 {
                     temp->parent->left = temp->right;
-                    temp->left->parent = temp->parent;
-
-                    delete temp;
-                    temp = nullptr;
-
-                    return true;
                 }
                 else if (temp->parent->right == temp) // if remove node is right node for it`s parent node
                 {
                     temp->parent->right = temp->right;
-                    temp->right->parent = temp->parent;
-
-                    delete temp;
-                    temp = nullptr;
-
-                    return true;
                 }
+
+                temp->right->parent = temp->parent;
+
+                delete temp;
+                temp = nullptr;
+
+                return true;
             }
 
             // Case 3, found node have two children.
@@ -199,20 +189,25 @@ class BST
 
             temp->data = maxElem->data;
 
-            if (maxElem->parent->left == maxElem)
+            if (maxElem->left)
             {
-                delete maxElem->parent->left;
-                maxElem->parent->left = nullptr;
+                maxElem->parent->right = maxElem->left;
+
+                delete maxElem;
+                maxElem = nullptr;
 
                 return true;
             }
-            else if (maxElem->parent->right == maxElem)
+            else
             {
-                delete maxElem->parent->right;
                 maxElem->parent->right = nullptr;
 
+                delete maxElem;
+                maxElem = nullptr;
+
                 return true;
             }
+
 
             // 2. right subtree minimum element.
 
@@ -220,18 +215,22 @@ class BST
 
             // temp->data = minElem->data;
 
-            // if (minElem->parent->left == minElem)
+            // if (minElem->left)
             // {
-            //     delete minElem->parent->left;
-            //     minElem->parent->left = nullptr;
+            //     minElem->parent->right = minElem->left;
+
+            //     delete minElem;
+            //     minElem = nullptr;
 
             //     return true;
             // }
-            // else if (minElem->parent->right == minElem)
+            // else
             // {
-            //     delete minElem->parent->right;
             //     minElem->parent->right = nullptr;
 
+            //     delete minElem;
+            //     minElem = nullptr;
+            
             //     return true;
             // }
 

@@ -95,62 +95,68 @@ class BST
                 return false;
             }
 
-            // Node* maxFromMins = temp->left;
-
-            // while(maxFromMins->right)
-            // {
-            //     maxFromMins = maxFromMins->right;
-            // }
-
-            // temp->data = maxFromMins->data;
-
-            // if (!maxFromMins->left && !maxFromMins->right) 
-            // {
-            //     if (!maxFromMins->parent) 
-            //     {
-            //         root = temp = maxFromMins = nullptr;
-            //         return true; 
-            //     }
-
-            //     maxFromMins->parent->right = nullptr;
-            //     return true;
-            // }
-
-            // if (maxFromMins->left) // && !maxFromMins->right) 
-            // {
-            //     maxFromMins->parent->right = maxFromMins->left;
-            //     maxFromMins->left->parent = maxFromMins->parent;
-
-            //     return true;
-            // }
-
-            Node* minFromMaxs = temp->right;
-
-            while(minFromMaxs->left)
+            if(temp->left)
             {
-                minFromMaxs = minFromMaxs->left;
-            }
+                Node* maxFromMins = temp->left;
 
-            temp->data = minFromMaxs->data;
-
-            if (!minFromMaxs->left && !minFromMaxs->right) 
-            {
-                if (!minFromMaxs->parent) 
+                while(maxFromMins->right)
                 {
-                    root = temp = minFromMaxs = nullptr;
-                    return true; 
+                    maxFromMins = maxFromMins->right;
                 }
 
-                minFromMaxs->parent->left = nullptr;
-                return true;
+                temp->data = maxFromMins->data;
+
+                if (!maxFromMins->left && !maxFromMins->right) 
+                {
+                    if (!maxFromMins->parent) 
+                    {
+                        root = temp = maxFromMins = nullptr;
+                        return true; 
+                    }
+
+                    maxFromMins->parent->right = nullptr;
+                    return true;
+                }
+
+                if (maxFromMins->left) // && !maxFromMins->right) 
+                {
+                    maxFromMins->parent->right = maxFromMins->left;
+                    maxFromMins->left->parent = maxFromMins->parent;
+
+                    return true;
+                }
             }
-
-            if (minFromMaxs->right) // && !minFromMaxs->left) 
+            else if (temp->right)
             {
-                minFromMaxs->parent->left = minFromMaxs->right;
-                minFromMaxs->right->parent = minFromMaxs->parent;
 
-                return true;
+                Node* minFromMaxs = temp->right;
+
+                while(minFromMaxs->left)
+                {
+                    minFromMaxs = minFromMaxs->left;
+                }
+
+                temp->data = minFromMaxs->data;
+
+                if (!minFromMaxs->left && !minFromMaxs->right) 
+                {
+                    if (!minFromMaxs->parent) 
+                    {
+                        root = temp = minFromMaxs = nullptr;
+                        return true; 
+                    }
+
+                    minFromMaxs->parent->left = nullptr;
+                    return true;
+                }
+
+                if (minFromMaxs->right) // && !minFromMaxs->left) 
+                {
+                    minFromMaxs->parent->left = minFromMaxs->right;
+                    minFromMaxs->right->parent = minFromMaxs->parent;
+
+                    return true;
+                }
             }
 
             return false;
@@ -204,17 +210,15 @@ class BST
                 if (temp->parent->left == temp) // if remove node is left node for it`s parent node
                 {
                     temp->parent->left = temp->left; 
-                    temp->left->parent = temp->parent;
-
-                    return true;
                 }
                 else if (temp->parent->right == temp) // if remove node is right node for it`s parent node
                 {
                     temp->parent->right = temp->left;
-                    temp->right->parent = temp->parent;
-
-                    return true;
                 }
+
+                temp->left->parent = temp->parent;
+
+                return true;
             }
 
             if (!temp->left && temp->right) // if node have only right child
@@ -222,17 +226,15 @@ class BST
                 if (temp->parent->left == temp) // if remove node is left node for it`s parent node
                 {
                     temp->parent->left = temp->right;
-                    temp->left->parent = temp->parent;
-
-                    return true;
                 }
                 else if (temp->parent->right == temp) // if remove node is right node for it`s parent node
                 {
                     temp->parent->right = temp->right;
-                    temp->right->parent = temp->parent;
-
-                    return true;
                 }
+
+                temp->right->parent = temp->parent;
+
+                return true;
             }
 
             // Case 3, found node have two children.
@@ -248,16 +250,17 @@ class BST
 
             temp->data = maxElem->data;
 
-            if (maxElem->parent->left == maxElem)
+            if (maxElem->left)
             {
-                maxElem->parent->left = nullptr;
+                maxElem->parent->right = maxElem->left;
                 return true;
             }
-            else if (maxElem->parent->right == maxElem)
+            else
             {
                 maxElem->parent->right = nullptr;
                 return true;
             }
+
 
             // 2. right subtree minimum element.
 
@@ -265,19 +268,18 @@ class BST
 
             // temp->data = minElem->data;
 
-            // if (minElem->parent->left == minElem)
+            // if (minElem->left)
             // {
-            //     minElem->parent->left = nullptr;
+            //     minElem->parent->right = minElem->left;
             //     return true;
             // }
-            // else if (minElem->parent->right == minElem)
+            // else
             // {
             //     minElem->parent->right = nullptr;
             //     return true;
             // }
 
             return false;
-
         }
 
         Node* max(Node* startNode)

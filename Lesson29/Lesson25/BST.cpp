@@ -156,16 +156,16 @@ class BST
 
                 if(temp->parent->left == temp)
                 {
-                    delete temp->parent->left;
                     temp->parent->left = nullptr;
+                    delete temp;
                     --size;
 
                     return true;
                 }
                 else if(temp->parent->right == temp)
                 {
-                    delete temp->parent->right;
                     temp->parent->right = nullptr;
+                    delete temp;
                     --size;
 
                     return true;
@@ -263,16 +263,16 @@ class BST
 
                 if (temp->parent->data > val) // remove left leaf
                 {
-                    delete temp->parent->left;
                     temp->parent->left = nullptr;
+                    delete temp;
 
                     --size;
                     return true;
                 }
                 if (temp->parent->data < val) // remove right leaf
                 {
-                    delete temp->parent->right;
                     temp->parent->right = nullptr;
+                    delete temp;
 
                     --size;
                     return true;
@@ -287,25 +287,20 @@ class BST
                 if (temp->parent->left == temp) // if remove node is left node for it`s parent node
                 {
                     temp->parent->left = temp->left; 
-                    temp->left->parent = temp->parent;
 
-                    delete temp;
-                    temp = nullptr;
-
-                    --size;
-                    return true;
                 }
                 else if (temp->parent->right == temp) // if remove node is right node for it`s parent node
                 {
                     temp->parent->right = temp->left;
-                    temp->right->parent = temp->parent;
-
-                    delete temp;
-                    temp = nullptr;
-
-                    --size;
-                    return true;
                 }
+
+                temp->left->parent = temp->parent;
+
+                delete temp;
+                temp = nullptr;
+
+                --size;
+                return true;
             }
 
             if (!temp->left && temp->right) // if node have only right child
@@ -313,25 +308,19 @@ class BST
                 if (temp->parent->left == temp) // if remove node is left node for it`s parent node
                 {
                     temp->parent->left = temp->right;
-                    temp->left->parent = temp->parent;
-
-                    delete temp;
-                    temp = nullptr;
-
-                    --size;
-                    return true;
                 }
                 else if (temp->parent->right == temp) // if remove node is right node for it`s parent node
                 {
                     temp->parent->right = temp->right;
-                    temp->right->parent = temp->parent;
-
-                    delete temp;
-                    temp = nullptr;
-
-                    --size;
-                    return true;
                 }
+
+                temp->right->parent = temp->parent;
+
+                delete temp;
+                temp = nullptr;
+
+                --size;
+                return true;
             }
 
             // Case 3, found node have two children.
@@ -347,20 +336,18 @@ class BST
 
             temp->data = maxElem->data;
 
-            if (maxElem->parent->left == maxElem)
+            if (maxElem->left)
             {
-                delete maxElem->parent->left;
-                maxElem->parent->left = nullptr;
+                maxElem->parent->right = maxElem->left;
+                delete maxElem;
 
-                --size;
                 return true;
             }
-            else if (maxElem->parent->right == maxElem)
+            else
             {
-                delete maxElem->parent->right;
                 maxElem->parent->right = nullptr;
+                delete maxElem;
 
-                --size;
                 return true;
             }
 
@@ -370,20 +357,18 @@ class BST
 
             // temp->data = minElem->data;
 
-            // if (minElem->parent->left == minElem)
+            // if (minElem->left)
             // {
-            //     delete minElem->parent->left;
-            //     minElem->parent->left = nullptr;
-            
-            //     --size;
+            //     minElem->parent->right = minElem->left;
+            //     delete minElem;
+
             //     return true;
             // }
-            // else if (minElem->parent->right == minElem)
+            // else
             // {
-            //     delete minElem->parent->right;
             //     minElem->parent->right = nullptr;
+            //     delete minElem;
 
-            //     --size;
             //     return true;
             // }
 
@@ -587,14 +572,14 @@ int main()
     bst.add(764);
     bst.add(763);
 
-    // if(bst.find(200))
-    // {
-    //     std::cout << "found" << std::endl;
-    // }
+    if(bst.find(200))
+    {
+        std::cout << "found" << std::endl;
+    }
 
-    // bst.deleteNode(800);
+    bst.deleteNode(800);
 
-    // bst.print();
+    bst.print();
 
     BST bst1;
 
