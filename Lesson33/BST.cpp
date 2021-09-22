@@ -40,6 +40,18 @@ class BST
             return *this;
         }
 
+        void add(int val)
+        {
+            return add(val, root);
+        }
+
+        void print()
+        {
+            print(root);
+        }
+
+    private:
+
         void deepCopy(Node* startNode)
         {
             if(startNode != nullptr)
@@ -65,19 +77,7 @@ class BST
                 delete startNode;
             }
         }
-
-        void add(int val)
-        {
-            return add(val, root);
-        }
-
-        void print()
-        {
-            print(root);
-        }
-
-    private:
-
+        
         void add(int val, Node* temp)
         {
             if(temp == nullptr)
