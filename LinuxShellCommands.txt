@@ -26,6 +26,49 @@
 17. clear - command is used to bring the command line on top of the computer terminal.
 18. mv filename .filename - make file hidden.
 19. file~  - tildes are generally used to indicate that the file is a backup copy of another file.
+20. chmod (change mode) - is the command and system call used to change the access permissions of file system objects sometimes known as modes. 
+        Each file and directory has three user based permission groups:
+                owner – The Owner permissions apply only the owner of the file or directory, they will not impact the actions of other users.
+                group – The Group permissions apply only to the group that has been assigned to the file or directory, they will not effect the actions of other users.
+                all users – The All Users permissions apply to all other users on the system, this is the permission group that you want to watch the most.
+                u – Owner
+                g – Group
+                o – Others
+                a – All users
+
+        Each file or directory has three basic permission types:
+                read – The Read permission refers to a user’s capability to read the contents of the file.
+                write – The Write permissions refer to a user’s capability to write or modify a file or directory.
+                execute – The Execute permission affects a user’s capability to execute a file or view the contents of a directory.          
+                r – Read
+                w – Write
+                x – Execute
+
+        + (plus) and – (minus); these are used to tell the system whether to add or remove the specific permissions.
+
+        Binary References To Set Permissions
+                Read = 4
+                Write = 2
+                Execute = 1
+                No permissions = 0
+
+        Examples.
+
+                chmod a-rw filename - for a – all users – (minus) remove the execute (r – read, w – write) permissions.
+                chmod g+x filename - for g – Group users + (plus) add the x (x – Execute) permissions.
+                chmod 640 filename - Owner - 6 ( 6 = 4 (Read) + 2 (Write) ),  Group - 4 ( Read = 4 ), Others - 0 (No permissions) - the owner has read and write permissions, the group has read permissions, and all other user have no rights to the file.
+
+21. touch - It is used to create a file without any content. The file created using touch command is empty. This command can be used when the user doesn’t have data to store at the time of file creation.
+22. The seven POSIX standard Unix file types are.
+        regular,
+        directory, 
+        symbolic link, 
+        FIFO special, 
+        block special, 
+        character special,
+        socket.
+23.  The execute bit on a directory allows you to access items that are inside the directory, even if you can not list the directories contents.
+
 
                                     Tools 
 

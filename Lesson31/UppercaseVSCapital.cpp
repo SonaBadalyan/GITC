@@ -13,7 +13,7 @@ int main()
         return 0 ;
     }
 
-    if (int (c) >= 97 && int (c) <= 121)
+    if (int (c) >= 97 && int (c) <= 122)
     {
         std::cout << "Entered leter is uppercase." << std::endl;
         return 0;
