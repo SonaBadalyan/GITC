@@ -13,14 +13,14 @@ int main()
     std::vector<std::string> matches;
 
     while(std::regex_search(text, match, reg))
-
-        matches.add(match[0]);
+    {
+        matches.push_back(match[0]);
         text = match.suffix();
     }
 
-    for (int i = 0; i < matches.length(); ++i)
+    for(auto& m : matches)
     {
-        std::cout << matches[i] << std::endl;
+        std::cout << m << std::endl;
     }
 
     return 0;
