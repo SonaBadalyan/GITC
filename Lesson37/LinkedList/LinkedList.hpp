@@ -29,7 +29,7 @@ class LinkedList
 
         bool remove(int index);
         
-        int operator[](int index);
+        T operator[](int index);
 
         bool deleteBack();
 

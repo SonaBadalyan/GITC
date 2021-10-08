@@ -160,7 +160,7 @@ bool LinkedList<T>::remove(int index)
 }
 
 template<class T>
-int LinkedList<T>::operator[](int index)
+T LinkedList<T>::operator[](int index)
 {
     if (index < 0 || index > m_length)
     {
