@@ -2,8 +2,6 @@
 #include <string>
 #include <regex>
 #include <vector>
-#include "LinkedList.hpp"
-
 
 int main()
 {
@@ -12,12 +10,11 @@ int main()
     std::string text = ("(+374)-95456789 this isn`t phone number +374 44 89 90 90 +374-44-89-90-90 +37444-89-90-90 +(374) -44-(89)-(90)-(90) +374 -44-(89)-(90) +37444-(899)-(900)");
     std::smatch match;
 
-    LinkedList<std::string> matches;
+    std::vector<std::string> matches;
 
     while(std::regex_search(text, match, reg))
-    {
-        std::string m = match[0];
-        matches.add(m);
+
+        matches.add(match[0]);
         text = match.suffix();
     }
 
