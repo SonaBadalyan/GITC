@@ -1,0 +1,2 @@
+This is a utf8 1 byte version.
+Իսկ սա 2 բայթանի տարբերակն է։
