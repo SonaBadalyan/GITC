@@ -111,7 +111,15 @@ unsigned int toLargerBaytes(unsigned int simbol, unsigned short bayteCount)
 
 int main()
 {
-    std::cout << toLargerBaytes(120, 3) << std::endl;
+    try
+    {
+        std::cout << toLargerBaytes(120, 3) << std::endl;
+    }
+    catch(const std::invalid_argument& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
 
     return 0;
 }
