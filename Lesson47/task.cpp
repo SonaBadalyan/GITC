@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <stdexcept>
 
 unsigned int toLargerBaytes(unsigned int simbol, unsigned short bayteCount)
@@ -13,7 +14,7 @@ unsigned int toLargerBaytes(unsigned int simbol, unsigned short bayteCount)
 
     while (0 != simbolCopy)
     {
-        simbolCopy >> 1;
+        simbolCopy = (simbolCopy >> 1);
         ++bitsCount;
     }
 
@@ -45,7 +46,7 @@ unsigned int toLargerBaytes(unsigned int simbol, unsigned short bayteCount)
 
         temp = 0b0000011111000000;
         temp &= simbol;
-        temp << 2;
+        temp = (temp << 2);
 
         resultedSimbol |= temp;
     }
@@ -64,13 +65,13 @@ unsigned int toLargerBaytes(unsigned int simbol, unsigned short bayteCount)
 
         temp = 0b000000000000111111000000;
         temp &= simbol;
-        temp << 2;
+        temp = (temp << 2);
 
         resultedSimbol |= temp;
 
         temp = 0b000000001111000000000000;
         temp &= simbol;
-        temp << 2;
+        temp = (temp << 4);
 
         resultedSimbol |= temp;
     }
@@ -89,19 +90,19 @@ unsigned int toLargerBaytes(unsigned int simbol, unsigned short bayteCount)
 
         temp = 0b00000000000000000000111111000000;
         temp &= simbol;
-        temp << 2;
+        temp = (temp << 2);
 
         resultedSimbol |= temp;
 
         temp = 0b00000000000000111111000000000000;
         temp &= simbol;
-        temp << 2;
+        temp = (temp << 4);
 
         resultedSimbol |= temp;
 
         temp = 0b00000000000111000000000000000000;
         temp &= simbol;
-        temp << 2;
+        temp = (temp << 6);
 
         resultedSimbol |= temp;
     }
@@ -111,15 +112,20 @@ unsigned int toLargerBaytes(unsigned int simbol, unsigned short bayteCount)
 
 int main()
 {
+    std::fstream numDestination;
+
+    numDestination.open("output.txt", std::ios::out);
+
     try
     {
-        std::cout << toLargerBaytes(120, 3) << std::endl;
+        numDestination << toLargerBaytes(1415, 2) << std::endl;
     }
     catch(const std::invalid_argument& e)
     {
         std::cerr << e.what() << '\n';
     }
-    
 
+    numDestination.close();
+    
     return 0;
 }
