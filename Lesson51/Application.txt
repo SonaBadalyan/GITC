@@ -1,0 +1,9 @@
+Dijkstra`s algorithm applications.
+
+1. It is used in finding shortest path.
+2. It is used in geographical maps.
+3. It is used in IP routing.
+4. Robots
+    Let's suppose we have a “package delivery” robot! It has to deliver a package from point A to point B with walking the minimum possible path.
+5.Social Media/Dating Applications
+    Think about how a social network/dating app like Facebook or Tinder works! They suggest friends/potential matches to you by calculating the “distance” of those friends/matches to you. Here the users are considered to be “nodes” of the graph (social network/dating app) and the “distance” could be defined using several factors (mutual friends, location, shared activities, hobbies, interests, etc)!
