@@ -1,0 +1,199 @@
+VCS   - Version Control Systems
+LVCS  - Local Version Control Syetems (such as RCS - Revision Control System)
+        patch - the differences between files
+CVCS  - Centralized Version Control Systems (such as CVS, Subversion, and Perforce) 
+DVCS  - Distributed Version Control Systems (such as Git, Mercurial, Bazaar or Darcs)
+
+Git   - During the early years of the Linux kernel maintenance (1991–2002), changes to the software were passed around as patches and archived files. In 2002, the Linux kernel project began using a proprietary DVCS called BitKeeper.
+        In 2005, the relationship between the community that developed the Linux kernel and the commercial company that developed BitKeeper broke down, and the tool’s free-of-charge status was revoked. 
+        This prompted the Linux development community (and in particular Linus Torvalds, the creator of Linux) to develop their own tool based on some of the lessons they learned while using BitKeeper. 
+        Some of the goals of the new system were as follows: 
+            Speed
+            Simple design
+            Strong support for non-linear development (thousands of parallel branches)
+            Fully distributed
+            Able to handle large projects like the Linux kernel efficiently (speed and data size)
+        snapshot - commit
+        The mechanism that Git uses for this checksumming is called a SHA-1 hash. 
+        This is a 40-character string composed of hexadecimal characters (0–9 and a–f) and calculated based on the contents of a file or directory structure in Git.
+
+Git has three main states that your files can reside in: 
+    1. modified  - means that you have changed the file but have not committed it to your database yet.
+    2. staged    - means that you have marked a modified file in its current version to go into your next commit snapshot.
+    3. committed - means that the data is safely stored in your local database.
+
+git --version - checks installed git version
+git init      - create a new repository 
+git clone     - get a copy of an existing Git repository
+git config    - get and set configuration variables 
+                These variables can be stored in three different places:
+                    1. [path]/etc/gitconfig file: 
+                        Contains values applied to every user on the system and all their repositories. 
+                        If you pass the option --system to git config, it reads and writes from this file specifically.
+                        Because this is a system configuration file, you would need administrative or superuser privilege to make changes to it.
+
+                    2. ~/.gitconfig or ~/.config/git/config file: 
+                        Values specific personally to you, the user. 
+                        You can make Git read and write to this file specifically by passing the --global option, and this affects all of the repositories you work with on your system.
+
+                    3. config file in the Git directory (that is, .git/config) of whatever repository you’re currently using: 
+                        Specific to that single repository.
+                        You can force Git to read from and write to this file with the --local option, but that is in fact the default. 
+                        Unsurprisingly, you need to be located somewhere in a Git repository for this option to work properly.
+
+                Each level overrides values in the previous level, so values in .git/config trump those in [path]/etc/gitconfig.
+
+git config --list --show-origin  - view all of your settings and where they are coming from using
+
+            Setup identity
+git config --global user.name "John Doe"
+git config --global user.email johndoe@example.com
+
+            Setup editor
+git config --global core.editor emacs
+
+            Setup default branch name
+git config --global init.defaultBranch main
+
+            Checking Settings
+git config --list - full list
+git config user.name - check username only
+
+            Getting Help
+
+git help <verb>
+git <verb> --help
+man git-<verb>
+
+    For example`
+                git help config
+
+more concise “help” output with the -h option
+    For example` 
+                git add -h
+
+            Getting a Git Repository
+
+Obtain a Git repository in one of two ways:
+
+    1. Create local directory that is currently not under version control, and turn it into a Git repository.
+        cd my_project
+        git init -  This creates a new subdirectory named .git that contains all of your necessary repository files.
+                    At this point, nothing in your project is tracked yet.
+        git add *.c 
+        git add LICENSE
+        git commit -m 'Initial project version'
+
+    2. Clone an existing Git repository from elsewhere.
+        git clone <url> - That creates a directory, initializes a .git directory inside it, pulls down all the data for that repository, and checks out a working copy of the latest version.
+
+In either case, you end up with a Git repository on your local machine, ready for work.
+
+        Checking the Status of Files
+
+File in your working directory can be in one of two states: 
+    1. tracked - that were in the last snapshot, as well as any newly staged files; they can be 
+        1. unmodified,
+        2. modified, 
+        3. staged. 
+    2. untracked.
+
+git status - show files status
+git add README -    command takes a path name for either a file or a directory; if it’s a directory, the command adds all the files in that directory recursively.
+                    use command to begin tracking new files, to stage files, and to do other things like marking merge-conflicted files as resolved.
+git status -s  or
+git status --short - see changes in a more compact way
+        ?? - untracked files
+        A  - new files that have been added to the staging area
+        M  - modified files
+        MM - modified, staged and then modified again
+
+        Ignoring Files
+
+Create a file listing patterns to match them named .gitignore
+
+    Viewing Staged and Unstaged Changes
+
+git diff   -  show exactly what changed, not just which files were changed
+git diff --staged - command compares staged changes to last commit
+git diff --cached
+
+    Committing  Changes
+
+git commit
+git commit -m
+git commit -a - Skipping the Staging Area
+git commit --amend - If you want to redo that commit, make the additional changes you forgot, stage them, and commit again using the --amend option
+
+    Removing Files
+
+git rm -  remove file from your staging area
+git rm -f - if you modified the file or had already added it to the staging area, you must force the removal with the -f option.
+git rm --cached - Another useful thing you may want to do is to keep the file in your working tree but remove it from your staging area.
+
+    Moving Files
+
+git mv file_from file_to
+
+    OR`
+        mv README.md README
+        git rm README.md
+        git add README
+
+    Viewing the Commit History
+
+git log
+    Oprions`
+        -p - shows the difference introduced in each commit
+        -2 -  limit the number of log entries displayed
+        -stat - abbreviated stats for each commit
+        --pretty - changes the log output to formats other than the default
+                oneline - prints each commit on a single line
+                short
+                full
+                fuller
+                    --pretty=oneline or short or full or filler
+                format - allows you to specify your own log output format.
+                    --pretty=format:"%h - %an, %ar : %s" 
+                    --graph -ce little ASCII graph showing your branch and merge history
+
+                    Limiting Log Output
+                        git log --since=2.weeks - gets the list of commits made in the last two weeks
+
+    Unstaging a Staged File
+git reset HEAD CONTRIBUTING.md
+
+    Unmodifying a Modified File
+git checkout -- CONTRIBUTING.md
+git restore 
+
+git remote -v
+git remote add <shortname> <url>
+git fetch
+git fetch <remote>
+git pull
+git push <remote> <branch>
+git push origin master
+git remote show <remote>
+git remote show origin
+git remote show
+git remote rename
+git remote remove
+git remote rm
+git tag
+git tag -l --list
+git tag -a 
+git show <tag_name>
+git tag -a v1.2 9fceb02
+git push origin <tagname>
+git push origin --tags
+git push <remote> --follow-tags
+git tag -d <tagname>
+git push <remote> :refs/tags/<tagname>
+git push origin --delete <tagname>
+git checkout v2.0.0
+git config --global alias.co checkout
+git config --global alias.unstage 'reset HEAD --'
+git unstage fileA
+git reset HEAD -- fileA
+git config --global alias.visual '!gitk'
