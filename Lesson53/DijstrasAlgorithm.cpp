@@ -1,83 +1,128 @@
 #include <iostream>
+#include <vector>
+#include <string>
 
-void calculateCitiesWeight
-                        (
-                            int citiesCount,
-                            int adjacencyMatrix[][9], 
-                            int citiesWeight[],                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
-                            bool chaked[], 
-                            int n
-                        )
+void checkoutPath
+                (
+                    int citiesCount,
+                    std::string cities[],
+                    std::vector<std::string>& shortestPath,
+                    int adjacencyMatrix[][9], 
+                    int citiesWeight[],                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+                    bool chaked[], 
+                    int curr,
+                    std::string to
+                )
 {
-    if (false == chaked[n])
+    if (to == cities[curr])
+        return;
+
+    int min = -1;
+    int index = 0;
+
+    for (int k = 0; k < citiesCount; ++k)
     {
-        for (int k = 0; k < citiesCount; ++k)
+        if(adjacencyMatrix[k][curr] && citiesWeight[curr] + adjacencyMatrix[k][curr] < citiesWeight[k])
         {
-            if(adjacencyMatrix[n][k] && citiesWeight[n] + adjacencyMatrix[n][k] < citiesWeight[k])
+            citiesWeight[k] = citiesWeight[curr] + adjacencyMatrix[k][curr];
+
+            if (-1 == min || min > citiesWeight[k])
             {
-                citiesWeight[k] = citiesWeight[n] + adjacencyMatrix[n][k];
-            }
-        }
-
-        chaked[n] = true;
-
-        for (int k = 0; k < citiesCount; ++k)
-        {
-            if(adjacencyMatrix[n][k])
-            {           
-                calculateCitiesWeight 
-                                    (                        
-                                        citiesCount,
-                                        adjacencyMatrix, 
-                                        citiesWeight,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
-                                        chaked, 
-                                        k
-                                    );
+                min = citiesWeight[k];
+                index = k;
             }
         }
     }
 
-    return;
-}
+    shortestPath.push_back(cities[index]);
 
+    chaked[curr] = true;
+    
+    checkoutPath 
+                (                        
+                    citiesCount,
+                    cities,
+                    shortestPath,
+                    adjacencyMatrix, 
+                    citiesWeight,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+                    chaked, 
+                    index,
+                    to
+                );
+}
 void Dijkstra
             ( 
                 int citiesCount,
                 std::string cities[],
+                std::vector<std::string>& shortestPath,
                 int adjacencyMatrix[][9], 
-                int citiesWeight[],                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
-                bool chaked[], 
-                std::string city
+                std::string from,
+                std::string to
             )
 {
-    bool ifFound = false;
+    int citiesWeight[citiesCount] = 
+    { 
+        INT32_MAX,
+        INT32_MAX, 
+        INT32_MAX, 
+        INT32_MAX, 
+        INT32_MAX, 
+        INT32_MAX, 
+        INT32_MAX, 
+        INT32_MAX, 
+        INT32_MAX
+    };
 
-    int i = 0;
+    bool chaked[citiesCount] =  { 0,  0, 0,  0,  0,  0,  0,  0,  0  };
 
-    for (; i < citiesCount; ++i)
+    bool fromFound = false;
+    bool toFound = false;
+
+    int startIndex = 0;
+    int endIndex = 0;
+
+    for (int i = 0; i < citiesCount; ++i)
     {
-        if (city == cities[i])
+        if (from == cities[i])
         {
-            ifFound = true;
+            fromFound = true;
             citiesWeight[i] = 0;
+            startIndex = i;
+        }
+
+        if (to == cities[i])
+        {
+            toFound = true;
+            endIndex = i;
+        }
+
+        if (fromFound && toFound)
+        {
             break;
         }
     }
 
-    if (ifFound)
+    if (fromFound && toFound)
     {
-        calculateCitiesWeight 
-                            (                        
-                                citiesCount,
-                                adjacencyMatrix, 
-                                citiesWeight,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
-                                chaked, 
-                                i
-                            );
+        checkoutPath 
+                    (                        
+                        citiesCount,
+                        cities,
+                        shortestPath,
+                        adjacencyMatrix, 
+                        citiesWeight,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+                        chaked, 
+                        startIndex,
+                        to
+                    );
     }
     else
     {
-        std::cout << "You have entered an unknown city name." << std::endl;
+        if (!fromFound)
+            std::cout << "You have entered an unknown city name: " << from << std::endl;
+        
+        if (!toFound)
+            std::cout << "You have entered an unknown city name: " << to << std::endl;
     }
 }
 
@@ -111,42 +156,35 @@ int main()
         { 0,  0,  0,   0,  0,  10, 0,  55, 0  }
     };
 
-    int citiesWeight[citiesCount] = 
-    { 
-        INT32_MAX,
-        INT32_MAX, 
-        INT32_MAX, 
-        INT32_MAX, 
-        INT32_MAX, 
-        INT32_MAX, 
-        INT32_MAX, 
-        INT32_MAX, 
-        INT32_MAX
-    };
+    std::cout << "Please enter a cities names and the program will print the shortest path between them." << std::endl;
+    
+    std::cout << " From : ";
+    std::string from;
+    std::cin >> from;
 
-    bool chaked[citiesCount] =  { 0,  0, 0,  0,  0,  0,  0,  0,  0  };
+    std::cout << " To : ";
+    std::string to;
+    std::cin >> to;
 
-    std::cout << "Please enter a city name and the program will calculate all cities weights." << std::endl;
-
-    std::string city;
-    std::cin >> city;
+    std::vector<std::string> shortestPath;
+    shortestPath.push_back(from);
 
     Dijkstra
-            (  
-                citiesCount, 
-                cities, 
-                adjacencyMatrix, 
-                citiesWeight, 
-                chaked, 
-                city
-            );
+    (  
+        citiesCount, 
+        cities, 
+        shortestPath,
+        adjacencyMatrix, 
+        from,
+        to
+    );
 
-    for (int i = 0; i < citiesCount; ++i)
+    for (auto const& it : shortestPath)
     {
-        std::cout << "City : " << cities[i] << ", weight : " << citiesWeight[i] << std::endl;
+        std::cout << it << " -> ";
     }
 
-    return 0;
-    return 0;
+    std::cout << std::endl;
 
+    return 0;
 }
