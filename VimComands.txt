@@ -16,5 +16,5 @@ Or type q! for quit without writing.
 4. :u or :undo - undo changes.
 5. :x it is same as :wq
 6. Ctrl - Z  - will exit without saving, and will create a hidden swap file. The swap file is necessary for recover losing information. And every time when we open this file, vim will ask to recover or delete this swap file.
-
+7. gg - in escape mode goes to the file`s start
 
