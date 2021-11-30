@@ -374,7 +374,54 @@ class LinkedList
 
         void sort()
         {
-            
+            Node* curr = head->m_next;
+
+            while(curr)
+            {
+                Node* prev = curr->m_prev;
+
+                bool isPrevGreater = false;
+
+                while (prev && prev->m_data > curr->m_data)
+                {
+                    isPrevGreater = true;
+                    prev = prev->m_prev;
+                }
+
+                auto moveNode = curr;
+                curr = curr->m_next;
+
+                if (isPrevGreater)
+                {
+                    if (moveNode->m_next) // from middle
+                    {
+                        moveNode->m_prev->m_next = moveNode->m_next;
+                        moveNode->m_next->m_prev = moveNode->m_prev;
+                    }
+                    else // from back
+                    {
+                        moveNode->m_prev->m_next = nullptr;
+                        tail = moveNode->m_prev;
+                    }
+
+                    if (!prev) // Add front 
+                    {
+                        moveNode->m_prev = nullptr;
+                        moveNode->m_next = head;
+
+                        head->m_prev = moveNode;
+
+                        head = moveNode;
+                    }
+                    else // Add middle 
+                    {
+                        moveNode->m_next = prev->m_next;
+                        moveNode->m_prev = prev;
+                        prev->m_next->m_prev = moveNode;
+                        prev->m_next = moveNode;
+                    }
+                }
+            }
         }
 
         ~LinkedList()
@@ -403,15 +450,21 @@ int main()
 {
     LinkedList<int> list;
 
-    list.add(10);
+    list.add(1000);
+    list.add(90);
     list.add(20);
-    list.addFront(0);
-    list.addFront(-10);
-    list.add(30);
+    list.add(10);
+    list.add(4);
     list.add(60);
+    list.add(5);
+
     
+    std::cout << "______Before sorting__________" << std::endl;
     list.print();
+
     list.sort();
+
+    std::cout << "______After sorting__________" << std::endl;
     list.print();
     
     return 0;
