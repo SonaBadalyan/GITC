@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
     {
         if(argc != 2)
         {
-            throw std::invalid_argument("Program must have 4 argumnet. First argument is program name, seconde is file path. \n Please rerun programm and give path to the file.");
+            throw std::invalid_argument("Program must have 4 argumnets. \n First argument is program name, seconde is file path. \n Please rerun programm and give path to the file.");
         }
     }
     catch(const std::invalid_argument& e)
@@ -16,8 +16,15 @@ int main(int argc, char *argv[])
         std::cout << e.what() << '\n';
     }
     
-    Convertor convertor(argv[1]);
-
-
+    try
+    {
+        Convertor convertor(argv[1]);
+        convertor.convert();
+    }
+    catch(const std::invalid_argument& e)
+    {
+        std::cout << e.what() << '\n';
+    }
+    
     return 0;
 }
