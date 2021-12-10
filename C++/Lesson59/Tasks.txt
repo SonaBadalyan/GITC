@@ -1,0 +1,3 @@
+1. BOM find reson 
+2. Dijstras algorithm
+3. BST print as tree
