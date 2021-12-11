@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
     {
         Convertor convertor(argv[1]);
         convertor.convert();
+        std::cout << convertor.getSize() << " symbols written into the " << convertor.getFileName() <<".pdf file." << std::endl;
     }
     catch(const std::invalid_argument& e)
     {

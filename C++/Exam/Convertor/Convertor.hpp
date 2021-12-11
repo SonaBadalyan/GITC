@@ -14,12 +14,14 @@ class Convertor
         int count = 0;
         long int size = 0;
         std::string m_path;
+        std::string rawFileName;
 
     public:
 
         Convertor(std::string path);
         void convert();
         long int getSize() const;
+        std::string getFileName() const;
         ~Convertor();
 };
 

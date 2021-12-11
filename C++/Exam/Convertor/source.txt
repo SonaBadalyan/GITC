@@ -1,3 +1,3 @@
 This is a test file.
-You know, it will be converted into the PDF format. 
-But spaces will be skipped.
+You know, it will be converted into the PDF format.
+But spaces will be ignored.
