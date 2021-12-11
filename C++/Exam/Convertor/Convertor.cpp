@@ -33,6 +33,11 @@ Convertor::Convertor(std::string path)
     size = ftell(rfp);
 
     fseek(rfp, 0, SEEK_SET);
+
+    if ( 0 != fclose(rfp))
+    {
+        throw std::logic_error(" Unable to close the " + txtFileName + " file!");
+    }
 }
 
 void Convertor::convert()
@@ -44,6 +49,11 @@ void Convertor::convert()
 
     wfp = fopen(pdfFileName.c_str(), "w");
 
+    if ( NULL == wfp)
+    {
+        throw std::logic_error(" Unable to create the " + pdfFileName + " file!");
+    }
+
     for (int i = 0; i < size; ++i)
     {
         if (int (buff[i]) != 32)
@@ -51,6 +61,11 @@ void Convertor::convert()
             ++count;
             fwrite(&buff[i], 1, sizeof(buff[i]), wfp);
         }
+    }
+
+    if ( 0 != fclose(wfp))
+    {
+        throw std::logic_error(" Unable to close the " + pdfFileName + " file!");
     }
 }
 
@@ -62,14 +77,4 @@ long int Convertor::getSize() const
 std::string Convertor::getFileName() const
 {
     return rawFileName;
-}
-
-Convertor::~Convertor()
-{
-    if (wfp)
-    {
-        fclose(wfp);
-    }
-
-    fclose(rfp);
 }

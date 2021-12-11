@@ -127,7 +127,7 @@ void findOptimalPath
     {
         std::cout << "You are visited " << optimalPath.size() << " sights! Great work!" << std::endl;
         std::cout << "Now you have " << money - currMoney << " USD money and " << time - currTime << " minutes time." << std::endl;
-        std::cout << "You are spend " << currMoney << " USD money and " << currTime << " minutes time." << std::endl;
+        std::cout << "You spent " << currMoney << " USD money and " << currTime << " minutes time." << std::endl;
     }
 }
 

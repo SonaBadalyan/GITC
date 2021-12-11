@@ -22,7 +22,6 @@ class Convertor
         void convert();
         long int getSize() const;
         std::string getFileName() const;
-        ~Convertor();
 };
 
 #endif // CONVERTOR_HPP
