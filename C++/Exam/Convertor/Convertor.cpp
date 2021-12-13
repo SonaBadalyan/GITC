@@ -51,12 +51,12 @@ void Convertor::convert()
 
     if ( NULL == wfp)
     {
-        throw std::logic_error(" Unable to create the " + pdfFileName + " file!");
+        throw std::logic_error("Unable to create the " + pdfFileName + " file!");
     }
 
     for (int i = 0; i < size; ++i)
     {
-        if (int (buff[i]) != 32)
+        if (int (buff[i]) <= 32)
         {
             ++count;
             fwrite(&buff[i], 1, sizeof(buff[i]), wfp);
@@ -65,7 +65,7 @@ void Convertor::convert()
 
     if ( 0 != fclose(wfp))
     {
-        throw std::logic_error(" Unable to close the " + pdfFileName + " file!");
+        throw std::logic_error("Unable to close the " + pdfFileName + " file!");
     }
 }
 
