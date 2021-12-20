@@ -11,7 +11,7 @@ while True :
         print("You are entered non digit value!")
         continue
 
-    if guess < 1 or guess > 15 :
+    if guess < 1 or guess > 15 : # ??
         print("Your entered number does not belong to the range!")
         continue
 
