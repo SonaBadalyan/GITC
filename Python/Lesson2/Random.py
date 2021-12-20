@@ -6,4 +6,4 @@ print(r1)
 r2 = randrange(2, 9)
 print(r2)
 
-print(randrange(5, 10, 2)) # ??
+print(randrange(5, 10, 2)) # 2 is step
