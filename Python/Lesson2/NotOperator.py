@@ -1,0 +1,6 @@
+print(True)
+print(not True)
+print(not 0)
+print(not 34)
+print(not '')
+print(not 'hello')
