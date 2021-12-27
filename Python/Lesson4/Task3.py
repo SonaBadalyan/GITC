@@ -1,8 +1,8 @@
-def test(*params) : # tuple
+def test1(*params) : # tuple
     print(params)
 
-def test(**params) : #dictionarie
+def test2(**params) : #dictionarie
     print(params)
 
-test(23, "John")
-test(age = 23, name = "John")
+test1(23, "John")
+test2(age = 23, name = "John")
