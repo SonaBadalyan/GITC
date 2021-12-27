@@ -4,4 +4,4 @@ def replace_str(s) :
 
 # Add end sign
 def add_simbol(s) :
-    return s + ".";
+    return s + "."
