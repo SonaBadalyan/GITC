@@ -1,0 +1,21 @@
+Lesson1     https://www.youtube.com/watch?v=2L7AUNlw8XU
+            https://www.youtube.com/watch?v=BKQOMWbMiX0
+            https://www.youtube.com/watch?v=baMkMvwFGaQ
+Lesson2     https://www.youtube.com/watch?v=i8ng1qRSRyw
+            https://www.youtube.com/watch?v=jmRbShI_7aw
+Lesson3     https://www.youtube.com/watch?v=B2xM-a0amZY
+            https://www.youtube.com/watch?v=6CDo8RgWyO0
+Lesson4     https://www.youtube.com/watch?v=lq1ulz4Sn-o
+            https://www.youtube.com/watch?v=4mrcKcuEmK8
+            https://www.youtube.com/watch?v=caZAOnv7PNg
+Lesson5     https://www.youtube.com/watch?v=Mz9hrmlbgnM
+            https://www.youtube.com/watch?v=pH9lNtzUqwg
+            https://www.youtube.com/watch?v=rXRctld_f4c
+Lesson6     https://www.youtube.com/watch?v=rIfhHO-X-j0
+            https://www.youtube.com/watch?v=fzvxYZ1LMEM
+            https://www.youtube.com/watch?v=m7JLeaBY4Qs
+
+Resources   https://checkio.org/
+            https://pypi.org/
+            https://docs.python.org/3/library/json.html
+            https://en.wikipedia.org/wiki/UTF-8
