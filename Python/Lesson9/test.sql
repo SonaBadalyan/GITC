@@ -30,7 +30,6 @@ CREATE TABLE `companies`(
     `id`  INT UNSIGNED NOT NULL,
     `name` VARCHAR(50) NOT NULL,
     `rating` INT UNSIGNED NOT NULL,
-    `status` BOOLEAN NOT NULL, 
     PRIMARY KEY(`id`)
 );
 
@@ -45,6 +44,10 @@ CREATE TABLE `eventsAndcourses`(
 
 CREATE TABLE `jobs`(
     `id`  INT UNSIGNED NOT NULL,
+    `type` VARCHAR(50) NOT NULL,
+    `experience` INT UNSIGNED NULL,
+    `location` VARCHAR(50) NOT NULL,
+    `FullTime` BOOLEAN NOT NULL,
     PRIMARY KEY(`id`)
 );
 
